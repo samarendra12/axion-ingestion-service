@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: axion-ingestion-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: axion-ingestion-service
+  template:
+    metadata:
+      labels:
+        app: axion-ingestion-service
+    spec:
+      containers:
+      - name: axion-ingestion-service
+        image: acrmicrodev5678.azurecr.io/ingest:v1 
+        ports:
+        - containerPort: 8000
+        resources:
+          requests:
+            cpu: "250m"
+            memory: "256Mi"
